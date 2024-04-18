@@ -154,7 +154,7 @@
                     z-index: 1;
                     box-shadow: 0 0 20px 20px black;" id="app_bar">
         
-        <button id="joebutton" onclick="window.location = `https:/www.icedjelly.com`;" style="    font-size: 2em;
+        <button id="joebutton" onclick="ijredirect()" style="    font-size: 2em;
                             font-family: monospace;
                             background: 0;
                             border: 0;
@@ -177,6 +177,9 @@
     <!--<input id="settime" type="time" step="1" />-->
     <p id="demo">DEADLINE REACHED</p>
     <script>
+        function ijredirect() {
+            window.location.replace('https://www.icedjelly.com')
+        }
         joebutton.addEventListener("mouseenter", function (e) {
             joebutton.innerText = "JOE.MT <"
             joebutton.style.fontSize = "2.5em"
