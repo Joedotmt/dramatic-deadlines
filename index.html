@@ -1,0 +1,259 @@
+<html>
+
+<head>
+    <base target="_blank" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@600&amp;display=swap" rel="stylesheet" />
+
+    <style>
+        @font-face {
+            font-family: sevensegment;
+            src: url(DSEG7Modern-BoldItalic.woff);
+        }
+
+        body {
+            background-color: black;
+            margin: auto;
+            padding: 0%;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'sevensegment'
+        }
+
+        p {
+            margin: 0%;
+            color: white;
+            font-family: 'sevensegment';
+            font-size: 9.2vw;
+            text-shadow: #fff 0 0 5px;
+            backdrop-filter: blur(5px);
+        }
+        button:hover{
+            background-color: rgb(45, 45, 45) !important;
+        }
+        button:active{
+            background-color: rgb(66, 66, 66) !important;
+        }
+
+        progress {
+            margin: 0%;
+            font-size: 7.8vw;
+        }
+
+        #space,
+        .stars {
+            overflow: hidden;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        .stars {
+            background-image:
+                radial-gradient(2px 2px at 20px 30px, #eee, rgba(0, 0, 0, 0)),
+                radial-gradient(2px 2px at 40px 70px, #fff, rgba(0, 0, 0, 0)),
+                radial-gradient(2px 2px at 50px 160px, #ddd, rgba(0, 0, 0, 0)),
+                radial-gradient(2px 2px at 90px 40px, #fff, rgba(0, 0, 0, 0)),
+                radial-gradient(2px 2px at 130px 80px, #fff, rgba(0, 0, 0, 0)),
+                radial-gradient(2px 2px at 160px 120px, #ddd, rgba(0, 0, 0, 0));
+            background-repeat: repeat;
+            background-size: 200px 200px;
+            animation: zoom 2s infinite;
+            opacity: 0;
+        }
+
+        .stars:nth-child(1) {
+            background-position: 50% 50%;
+            animation-delay: 0s;
+        }
+
+        .stars:nth-child(2) {
+            background-position: 20% 60%;
+            animation-delay: 500ms;
+        }
+
+        .stars:nth-child(3) {
+            background-position: -20% -30%;
+            animation-delay: 1s;
+        }
+
+        .stars:nth-child(4) {
+            background-position: 40% -80%;
+            animation-delay: 1500ms;
+        }
+
+        .stars:nth-child(5) {
+            background-position: -20% 30%;
+            animation-delay: 2s;
+        }
+
+        .stars:nth-child(6) {
+            background-position: 40% -80%;
+            animation-delay: 2500ms;
+        }
+
+        .stars:nth-child(7) {
+            background-position: -20% 30%;
+            animation-delay: 3s;
+        }
+
+        .stars:nth-child(8) {
+            background-position: -20% 30%;
+            animation-delay: 3500ms;
+        }
+
+        .stars:nth-child(9) {
+            background-position: 40% -80%;
+            animation-delay: 4s;
+        }
+
+        @keyframes zoom {
+            0% {
+                opacity: 0;
+                transform: scale(0.5);
+                animation-timing-function: ease-in;
+            }
+
+            85% {
+                opacity: 1;
+                transform: scale(2.8);
+                animation-timing-function: linear;
+            }
+
+            100% {
+                opacity: 0;
+                transform: scale(4.5);
+            }
+        }
+
+        body {
+            background: #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="    position: absolute;
+                    display: flex;
+                    text-align: left;
+                    left: 0;
+                    right: 0;
+                    width: 100%;
+                    height: fit-content;
+                    align-self: flex-start;
+                    background: #0f0f0f;
+                    color: #c7c7c7;
+                    font-family: monospace;
+                    z-index: 1;
+                    box-shadow: 0 0 20px 20px black;" id="app_bar">
+        
+        <button id="joebutton" onclick="window.location = `https:/www.icedjelly.com`;" style="    font-size: 2em;
+                            font-family: monospace;
+                            background: 0;
+                            border: 0;
+                            flex-shrink: 0;
+                            color: white; transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);">JOE.MT</button>
+        <div style="text-align: right; width: 100%; margin: 0.2em 0.5em; font-size: 2em;">UNIT 2 VET IT EXAM</div>
+    </div>
+    <div id="space">
+        <div class="stars"></div>
+        <div class="stars"></div>
+        <div class="stars"></div>
+        <div class="stars"></div>
+        <div class="stars"></div>
+        <div class="stars"></div>
+        <div class="stars"></div>
+        <div class="stars"></div>
+        <div class="stars"></div>
+    </div>
+
+    <!--<input id="settime" type="time" step="1" />-->
+    <p id="demo">DEADLINE REACHED</p>
+    <script>
+        joebutton.addEventListener("mouseenter", function (e) {
+            joebutton.innerText = "JOE.MT <"
+            joebutton.style.fontSize = "2.5em"
+        });
+        joebutton.addEventListener("mouseleave", function (e) {
+            joebutton.innerText = "JOE.MT"
+            joebutton.style.fontSize = "2em"
+        });
+        joebutton.addEventListener("mousedown", function (e) {
+            joebutton.innerText = "JOE.MT<"
+            joebutton.style.fontSize = "2.5em"
+        });
+        joebutton.addEventListener("mouseup", function (e) {
+            joebutton.innerText = "JOE.MT <"
+            joebutton.style.fontSize = "2.5em"
+        });
+
+        // Set the date we're counting down to
+        var countDownDate = new Date("May 15, 2024 00:00:00").getTime();
+        var startDate = new Date("May 15, 2024 00:00:00").getTime();
+        let oldseconds = 0;
+        let oldminutes = 0;
+        // Update the count down every 1 second
+        var x = setInterval(function () {
+            // Get today's date and time
+            var now = new Date().getTime();
+            // Find the distance between now and the count down date
+            var distance = countDownDate - now;
+
+            // Time calculations for days, hours, minutes and seconds
+            
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor(
+                (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+            );
+            var minutes = Math.floor(
+                (distance % (1000 * 60 * 60)) / (1000 * 60)
+            );
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            var mseconds = Math.floor((distance % (1000 * 60)) / 1);
+
+            document.getElementById("demo").innerHTML =
+                ("00" + days).slice(-2) +
+                ":" +
+                ("00" + hours).slice(-2) +
+                ":" +
+                ("00" + minutes).slice(-2) +
+                ":" +
+                ("00" + seconds).slice(-2) +
+                " . " +
+                ("00" + mseconds).slice(-3) +
+                "";
+
+            if (oldseconds != seconds) {
+                oldseconds = seconds;
+                var audio = new Audio(
+                    "bbc-news-countdown-single-beep.mp3"
+                );
+                audio.play();
+            }
+
+            if (oldminutes != minutes) {
+                oldminutes = minutes;
+                var audio = new Audio(
+                    "bbc-headline.mp3"
+                );
+                audio.play();
+            }
+
+            // If the count down is over, write some text
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("demo").innerHTML =
+                    "DEADLINE REACHED";
+            }
+        }, 1);
+    </script>
+</body>
+
+</html>
