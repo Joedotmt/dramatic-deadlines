@@ -2,353 +2,41 @@
 
 <head>
     <base target="_blank" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@600&amp;display=swap" rel="stylesheet" />
-
-    <style>
-        @font-face {
-            font-family: sevensegment;
-            src: url(DSEG7Modern-BoldItalic.woff);
-        }
-
-        body {
-            background-color: black;
-            margin: auto;
-            padding: 0%;
-            text-align: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: 'sevensegment'
-        }
-
-        p {
-            margin: 0%;
-            color: white;
-            font-family: 'sevensegment';
-            font-size: 9.2vw;
-            text-shadow: #fff 0 0 5px;
-            backdrop-filter: blur(5px);
-        }
-
-        button:hover {
-            background-color: rgb(45, 45, 45) !important;
-        }
-
-        button:active {
-            background-color: rgb(66, 66, 66) !important;
-        }
-
-        progress {
-            margin: 0%;
-            font-size: 7.8vw;
-        }
-
-        body {
-            background: #000;
-        }
-    </style>
+    <link href="style.css" rel="stylesheet" />
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.1.3/build/spline-viewer.js"></script>
+    <spline-viewer id="spline" url="https://prod.spline.design/dLIdSVIfdBqwzWtf/scene.splinecode"></spline-viewer>
+    <script type="text/javascript" src="app.js"></script>
 </head>
 
 <body style="overflow: hidden;">
-    <div style="    position: absolute;
-                    display: flex;
-                    text-align: left;
-                    left: 0;
-                    right: 0;
-                    width: 100%;
-                    top: 0px;
-                    height: fit-content;
-                    align-self: flex-start;
-                    background: #0f0f0f;
-                    color: #c7c7c7;
-                    transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
-                    font-family: monospace;
-                    z-index: 1;" id="app_bar">
 
-        <button id="joebutton" onclick="ijredirect()" style="    font-size: 2em;
-                            font-family: monospace;
-                            background: 0;
-                            border: 0;
-                            flex-shrink: 0;
-                            color: white; transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);">JOE.MT</button>
+    <audio id="tenbeep" preload="auto">
+        <source src="10beep.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="twentybeep" preload="auto">
+        <source src="20beep.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="ninetybeep" preload="auto">
+        <source src="90beep.mp3" type="audio/mpeg">
+    </audio>
+
+    
+    
+
+    <div id="app_bar">
+        <button id="joebutton" onclick="window.location.replace('https:/www.joe.mt')">JOE.MT</button>
         <div style="text-align: right; width: 100%; margin: 0.2em 0.5em; font-size: 2em;">UNIT 2 VET IT EXAM</div>
     </div>
-    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.1.3/build/spline-viewer.js"></script>
-    <spline-viewer id="spline" style="    position: absolute;
-    top: 0;
-    left: 0;
-    display: none;
-    scale: 1.22;" url="https://prod.spline.design/dLIdSVIfdBqwzWtf/scene.splinecode"></spline-viewer>
 
-    <!--<input id="settime" type="time" step="1" />-->
     <div style="display: flex; align-items: flex-end;">
         <p id="demo">DEADLINE REACHED</p>
         <p style="font-size: 3em;" id="demoms"> . 000</p>
     </div>
     <canvas style="z-index: -1; position: absolute; left: 0; right: 0;" class="canvas"></canvas>
-
-    <script>
-        let distance = 1000000;
-        const canvas = document.querySelector('.canvas');
-        const ctx = canvas.getContext("2d");
-
-        function random(min, max)
-        {
-            return min + Math.random() * (max + 1 - min);
-        }
-
-        window.addEventListener('resize', function ()
-        {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            //Re-add the stars
-            stars();
-        });
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        function ijredirect()
-        {
-            window.location.replace('https://www.joe.mt')
-        }
-        joebutton.addEventListener("mouseenter", function (e)
-        {
-            joebutton.innerText = "JOE.MT <"
-            joebutton.style.fontSize = "2.5em"
-        });
-        joebutton.addEventListener("mouseleave", function (e)
-        {
-            joebutton.innerText = "JOE.MT"
-            joebutton.style.fontSize = "2em"
-        });
-        joebutton.addEventListener("mousedown", function (e)
-        {
-            joebutton.innerText = "JOE.MT<"
-            joebutton.style.fontSize = "2.5em"
-        });
-        joebutton.addEventListener("mouseup", function (e)
-        {
-            joebutton.innerText = "JOE.MT <"
-            joebutton.style.fontSize = "2.5em"
-        });
-
-        let audioplaying = false
-        // Set the date we're counting down to
-        var countDownDate = new Date("May 14, 2024 09:40:00").getTime();
-        //var countDownDate = new Date().getTime() + 73000;
-        var startDate = new Date("May 15, 2024 00:00:00").getTime();
-        let oldseconds = 0;
-        let oldminutes = 0;
-        // Update the count down every 1 second
-        let countInterval = 0;
-
-
-        //let universalspeed = 1.01
-        let universalspeed = 1.001
-        let speedvariation = 0.001
-        let starspeeds = [universalspeed, universalspeed + speedvariation]
-        let starArray = []
-        addStars(500)
-
-        function randomRange(min, max)
-        {
-            return Math.random() * (max - min) + min;
-        }
-        function addStars(amount)
-        {
-            for (let i = 0; i < amount; i++)
-            {
-                let xPos = random(2, canvas.width - 2) - canvas.width / 2;
-                let yPos = random(2, canvas.height - 2) - canvas.height / 2;
-                let speed = randomRange(starspeeds[0], starspeeds[1]);
-                starArray.push([xPos, yPos, 0, speed])
-            }
-        }
-        audioplayingalarm = false
-        function stars()
-        {
-            if (!audioplaying)
-            {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                ctx.beginPath()
-            }
-            if (distance < 1000 && !audioplayingalarm)
-            {
-                canvas.style.display = 'none'
-                demo.style.display = 'none'
-                demoms.style.display = 'none'
-                audioplayingalarm = true
-                let audio = new Audio('empty.mp3');
-                audio.play(); 
-
-                setTimeout(function(){
-                    let audio = new Audio('short-alarm-clock.mp3');
-                    audio.play();
-                    spline.style.display = 'block'
-                    setInterval(function(){
-                        let audio = new Audio('short-alarm-clock.mp3');
-                        audio.play(); 
-                    },3900)
-                },2000)
-
-                
-            }
-
-            const canvasSize = canvas.width * canvas.height;
-            let xOffset = 0;
-            let yOffset = 0;
-
-            if (distance < 10000)
-            {
-                ctx.fillStyle = 'red';
-            }
-            else
-            {
-                ctx.fillStyle = 'white';
-            }
-            for (let i = 0; i < starArray.length; i++)
-            {
-                if (i == 1)
-                {
-                    //console.log(Math.sqrt(starArray[i][0] ** 2 + starArray[i][1] ** 2))
-                }
-
-                if (audioplaying)
-                {
-                    starArray[i][0] = starArray[i][0] * 1.01
-                    starArray[i][1] = starArray[i][1] * 1.01
-                }
-                else
-                {
-                    starArray[i][0] = starArray[i][0] * starArray[i][3]
-                    starArray[i][1] = starArray[i][1] * starArray[i][3]
-                }
-
-                starArray[i][2] += 1
-                xPos = starArray[i][0] + canvas.width / 2
-                yPos = starArray[i][1] + canvas.height / 2
-
-                if (!(xPos > -10 && xPos < canvas.width + 10 && yPos > -10 && yPos < canvas.height + 10))
-                {
-                    starArray[i][0] = random(2, canvas.width - 2) - canvas.width / 2;
-                    starArray[i][1] = random(2, canvas.height - 2) - canvas.height / 2;
-                    starArray[i][2] = 0
-                    starArray[i][3] = randomRange(starspeeds[0], starspeeds[1]);
-                }
-                let alpha = random(0.7, 1);
-                //let size = random(1, 2);
-                size = Math.min(1, starArray[i][2] / 100)
-                //alpha = 1
-
-
-                ctx.globalAlpha = alpha;
-                //ctx.fill(xPos, yPos, size, size);
-
-                ctx.beginPath()
-                ctx.arc(xPos + xOffset, yPos - yOffset, size, 0, 2 * Math.PI, false);
-                ctx.fill();
-            }
-        }
-
-        let audioalarming;
-        var x = setInterval(function ()
-        {
-            countInterval++
-            // Get today's date and time
-            var now = new Date().getTime();
-            // Find the distance between now and the count down date
-            distance = countDownDate - now;
-
-            // Time calculations for days, hours, minutes and seconds
-
-            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            var hours = Math.floor(
-                (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-            );
-            var minutes = Math.floor(
-                (distance % (1000 * 60 * 60)) / (1000 * 60)
-            );
-            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            var mseconds = Math.floor((distance % (1000 * 60)) / 1);
-
-            demo.innerText = ""
-            if (days > 0)
-            {
-                demo.innerText += ("00" + days).slice(-2) + ":"
-                console.log(days)
-            }
-            if (hours > 0)
-            {
-                demo.innerText += ("00" + hours).slice(-2) + ":"
-            }
-            if (minutes > 0)
-            {
-                demo.innerText += ("00" + minutes).slice(-2) + ":"
-            }
-            demo.innerText += ("00" + seconds).slice(-2);
-
-
-
-            document.getElementById("demoms").innerHTML = " . " + ("00" + mseconds).slice(-3);
-
-            if (distance < 60000)
-            {
-                if (!audioplaying)
-                {
-                    audioalarming = new Audio(
-                        "alarming.mp3"
-                    );
-                    audioalarming.play();
-                    audioplaying = true;
-                    app_bar.style.top = "-45px"
-                }
-            }
-
-            if (distance < 1000)
-            {
-                audioalarming.pause()
-            }
-
-            if (oldseconds != seconds)
-            {
-                oldseconds = seconds;
-                if (!audioplaying)
-                {
-                    var audio = new Audio(
-                        "bbc-news-countdown-single-beep.mp3"
-                    );
-                    audio.play();
-                }
-            }
-
-            if (oldminutes != minutes)
-            {
-                oldminutes = minutes;
-                if (!audioplaying)
-                {
-                    var audio = new Audio(
-                        "bbc-headline.mp3"
-                    );
-                    audio.play();
-                }
-            }
-
-            // If the count down is over, write some text
-            if (distance < 0)
-            {
-                clearInterval(x);
-                document.getElementById("demo").innerHTML =
-                    "00";
-                document.getElementById("demoms").innerHTML =
-                    " . 000";
-            }
-            stars()
-        }, 1);
-    </script>
 </body>
 
 </html>
