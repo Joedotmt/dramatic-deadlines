@@ -23,6 +23,9 @@ function swap_chat_view()
 }
 window.onload = function ()
 {
+    setTimeout(() => {
+        chatframe.style.transition = '1s cubic-bezier(0.075, 0.82, 0.165, 1)'
+    }, 100);
     if (location.hash == '#0')
     {
         chat_view_mode = true
