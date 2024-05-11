@@ -5,7 +5,7 @@ function swap_chat_view()
     {
         title_text.style.margin = '0.2em 0.5em'
         title_text.style.marginLeft = '0'
-        chatframe.style.translate = '50vw 0'
+        chatframe.style.translate = '50em 0'
         closechatbutton.innerText = '<'
         chatframe.style.display = 'block'
 
@@ -31,7 +31,7 @@ window.onload = function ()
     else
     {
         chat_view_mode = false
-        chatframe.style.translate = '50vw 0'
+        chatframe.style.translate = '50em 0'
         swap_chat_view()
     }
 
