@@ -12,7 +12,21 @@
     <script type="text/javascript" src="app.js"></script>
 </head>
 
+
+
 <body style="overflow: hidden;">
+
+    <iframe id="chatframe" style="position: ABSOLUTE; display: block;
+    z-index: 2;
+    transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+    width: 28em;
+    height: 25.6em;
+    scale: 0.6;
+    translate: 50vw 0;
+    right: -6.4em;
+    top: -5.1em;
+    opacity: 1;
+    border: 0;" src="https://deadsimplechat.com/HxlI2fEHo" width="100%" height="600px"></iframe>
 
     <audio id="tenbeep" preload="auto">
         <source src="10beep.mp3" type="audio/mpeg">
@@ -29,12 +43,19 @@
 
     <div id="app_bar">
         <button id="joebutton" onclick="window.location.replace('https:/www.joe.mt')">JOE.MT</button>
-        <div style="text-align: right; width: 100%; margin: 0.2em 0.5em; font-size: 2em;">UNIT 2 VET IT EXAM</div>
+        <button id="closechatbutton" onclick="swap_chat_view()" style="    margin-left: auto;
+        font-size: 1.3em;
+        width: 1.5em;
+        padding: 0;
+        color: lightgray;
+        border: 0;
+        background: transparent;"></button>
+        <div id="title_text" style="transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1); text-align: right; margin: 0.2em 0.5em; margin-left: 0; font-size: 2em;">UNIT 2 VET IT EXAM</div>
     </div>
 
     <div style="display: flex; align-items: flex-end;">
-        <p id="demo">DEADLINE REACHED</p>
-        <p style="font-size: 3em;" id="demoms"> . 000</p>
+        <p id="demo"></p>
+        <p style="font-size: 3em;" id="demoms"></p>
     </div>
     <canvas style="z-index: -1; position: absolute; left: 0; right: 0;" class="canvas"></canvas>
 </body>

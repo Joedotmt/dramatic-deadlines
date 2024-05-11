@@ -1,5 +1,40 @@
+chat_view_mode = true
+function swap_chat_view()
+{
+    if (chat_view_mode)
+    {
+        title_text.style.margin = '0.2em 0.5em'
+        title_text.style.marginLeft = '0'
+        chatframe.style.translate = '50vw 0'
+        closechatbutton.innerText = '<'
+        chatframe.style.display = 'block'
+
+    }
+    else
+    {
+        title_text.style.margin = '0.2em 0.5em'
+        title_text.style.marginLeft = '0'
+        title_text.style.marginRight = '10.3em'
+        chatframe.style.translate = '0 0'
+        chatframe.style.display = 'block'
+        closechatbutton.innerText = '>'
+    }
+    chat_view_mode = !chat_view_mode
+}
 window.onload = function ()
 {
+    if (location.hash == '#0')
+    {
+        chat_view_mode = true
+        swap_chat_view()
+    }
+    else
+    {
+        chat_view_mode = false
+        chatframe.style.translate = '50vw 0'
+        swap_chat_view()
+    }
+
     let distance = 1000000;
     const canvas = document.querySelector('.canvas');
     const ctx = canvas.getContext("2d");
@@ -43,7 +78,7 @@ window.onload = function ()
     let pause_regular_audio = false
     // Set the date we're counting down to
     var countDownDate = new Date("May 14, 2024 09:45:00").getTime();
-    //countDownDate = Date.now() + 90000
+    //countDownDate = Date.now() + 50000
     var startDate = new Date("May 15, 2024 00:00:00").getTime();
     let oldseconds = 0;
     let oldminutes = 0;
@@ -77,12 +112,15 @@ window.onload = function ()
     {
         if (distance > 46000)
         {
-            
+
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.beginPath()
         }
-        else{
+        if (distance < 47000)
+        {
             app_bar.style.top = "-45px"
+            chat_view_mode = true;
+            swap_chat_view()
         }
 
         const canvasSize = canvas.width * canvas.height;
