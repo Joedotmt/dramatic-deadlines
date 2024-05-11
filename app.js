@@ -5,7 +5,7 @@ function swap_chat_view()
     {
         title_text.style.margin = '0.2em 0.5em'
         title_text.style.marginLeft = '0'
-        chatframe.style.translate = '50em 0'
+        chatframe.style.right = '-50em'
         closechatbutton.innerText = '<'
         chatframe.style.display = 'block'
 
@@ -15,7 +15,7 @@ function swap_chat_view()
         title_text.style.margin = '0.2em 0.5em'
         title_text.style.marginLeft = '0'
         title_text.style.marginRight = '10.3em'
-        chatframe.style.translate = '0 0'
+        chatframe.style.right = '-6.4em'
         chatframe.style.display = 'block'
         closechatbutton.innerText = '>'
     }
@@ -31,7 +31,7 @@ window.onload = function ()
     else
     {
         chat_view_mode = false
-        chatframe.style.translate = '50em 0'
+        chatframe.style.right = '-50em'
         swap_chat_view()
     }
 
