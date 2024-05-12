@@ -24,9 +24,9 @@ function swap_chat_view()
 window.onload = function ()
 {
     setTimeout(() => {
-        chatframe.style.transition = '1s cubic-bezier(0.075, 0.82, 0.165, 1)'
+        //chatframe.style.transition = '1s cubic-bezier(0.075, 0.82, 0.165, 1)'
     }, 100);
-    if (location.hash == '#0')
+    if (location.hash.includes("0"))
     {
         chat_view_mode = true
         swap_chat_view()
@@ -80,9 +80,12 @@ window.onload = function ()
 
     let pause_regular_audio = false
     // Set the date we're counting down to
+
     var countDownDate = new Date("May 14, 2024 09:45:00").getTime();
-    //countDownDate = Date.now() + 50000
-    var startDate = new Date("May 15, 2024 00:00:00").getTime();
+    if (location.hash.includes("1"))
+    {
+        countDownDate = Date.now() + 90000
+    }
     let oldseconds = 0;
     let oldminutes = 0;
     // Update the count down every 1 second
@@ -243,15 +246,20 @@ window.onload = function ()
                 let audio = new Audio('empty.mp3');
                 audio.volume = 0.2
                 audio.play();
+                let audioending = new Audio('endingtheme.mp3');
+                audioending.volume = 1
+                audioending.play();
 
                 setTimeout(function ()
                 {
                     let audio = new Audio('short-alarm-clock.mp3');
+                    audio.volume = 0.2
                     audio.play();
                     spline.style.display = 'block'
                     setInterval(function ()
                     {
                         let audio = new Audio('short-alarm-clock.mp3');
+                        audio.volume = 0.2
                         audio.play();
                     }, 3900)
                 }, 2000)
