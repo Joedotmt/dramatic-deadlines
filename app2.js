@@ -169,7 +169,8 @@ window.onload = function ()
     {
         countInterval++
         // Get today's date and time
-        var now = new Date().getTime();
+        //console.log(moment())
+        var now = moment()//new Date().getTime();
         // Find the distance between now and the count down date
         distance = countDownDate - now;
 
