@@ -23,7 +23,8 @@ function swap_chat_view()
 }
 window.onload = function ()
 {
-    setTimeout(() => {
+    setTimeout(() =>
+    {
         //chatframe.style.transition = '1s cubic-bezier(0.075, 0.82, 0.165, 1)'
     }, 100);
     if (location.hash.includes("0"))
@@ -176,9 +177,13 @@ window.onload = function ()
             {
                 size = 3
             }
-            if (distance < 2000)
+            else if (distance < 2000)
             {
                 size = 15
+            }
+            else if (distance < 1000)
+            {
+                size = 150
             }
             //alpha = 1
 

@@ -89,7 +89,6 @@ window.onload = function ()
         {
             app_bar.style.top = "-45px"
             chat_view_mode = true;
-            swap_chat_view()
         }
 
         const canvasSize = canvas.width * canvas.height;
@@ -139,9 +138,13 @@ window.onload = function ()
             {
                 size = 3
             }
-            if (distance < 2000)
+            else if (distance < 2000)
             {
                 size = 15
+            }
+            else if (distance < 1000)
+            {
+                size = 150
             }
             //alpha = 1
 
