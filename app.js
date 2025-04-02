@@ -1,3 +1,11 @@
+fetch('http://worldtimeapi.org/api/timezone/Etc/UTC')
+  .then(response => response.json())
+  .then(data => {
+    console.log("Current UTC time:", data.datetime);
+  })
+  .catch(error => console.error("Error fetching time:", error));
+
+
 chat_view_mode = true
 function swap_chat_view()
 {
@@ -82,7 +90,7 @@ window.onload = function ()
     let pause_regular_audio = false
     // Set the date we're counting down to
 
-    var countDownDate = new Date("May 14, 2024 09:45:00").getTime();
+    var countDownDate = new Date("April 2, 2025 09:45:00").getTime();
     if (location.hash.includes("1"))
     {
         countDownDate = Date.now() + 90000
