@@ -3,6 +3,7 @@
 <head>
     <base target="_blank" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@600&amp;display=swap" rel="stylesheet" />
@@ -15,7 +16,7 @@
 
 
 <body style="overflow: hidden;">
-
+    <div id="chatframe"></div>
     <!-- <embed id="chatframe" style="position: absolute; display: block;
     z-index: 2;
     transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
@@ -40,7 +41,7 @@
     
     
 
-    <div id="app_bar">
+    <div id="app_bar" style="display: none;">
         <button id="joebutton" onclick="window.location.replace('https:/www.joe.mt')">JOE.MT</button>
         <button id="closechatbutton" onclick="swap_chat_view()" style="    margin-left: auto;
         font-size: 1.3em;

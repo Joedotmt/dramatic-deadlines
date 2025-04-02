@@ -1,20 +1,18 @@
-let serverTimeOffset = 0; // This will store the difference (in ms) between server time and client time
 
-// Function to update the server time offset
-function updateServerTime() {
-  fetch('https://timeapi.io/api/time/current/zone?timeZone=Europe%2FAmsterdam')
+
+let GLOBALTimeData
+
+
+function getUpdatedServerTime(){
+    fetch('https://timeapi.io/api/time/current/zone?timeZone=Europe%2FAmsterdam')
     .then(response => response.json())
     .then(data => {
-      // Get the server time from the API and calculate the offset
-      let serverTime = new Date(data.dateTime).getTime();
-      serverTimeOffset = serverTime - Date.now();
+      GLOBALTimeData = data
+      getUpdatedServerTime()
     })
     .catch(error => console.error("Error fetching time:", error));
 }
-
-// Initial fetch and then update every minute (60000 ms)
-updateServerTime();
-setInterval(updateServerTime, 60000);
+getUpdatedServerTime()
 
 chat_view_mode = true
 function swap_chat_view()
@@ -97,21 +95,26 @@ window.onload = function ()
         joebutton.style.fontSize = "2.5em"
     });
 
-      // Set the target countdown date (using the server reference time)
-        var countDownDate = new Date("April 2, 2025 09:45:00").getTime();
-        if (location.hash.includes("1")) {
-            countDownDate = Date.now() + 90000;
-        }
-        
-        let oldseconds = 0;
-        let oldminutes = 0;
-        let pause_regular_audio = false;
-        let countInterval = 0;
-        let universalspeed = 1.001;
-        let speedvariation = 0.001;
-        let starspeeds = [universalspeed, universalspeed + speedvariation];
-        let starArray = [];
-        addStars(500);
+    let pause_regular_audio = false
+    // Set the date we're counting down to
+
+    var countDownDate = new Date("April 2, 2025 09:45:00").getTime();
+    if (location.hash.includes("1"))
+    {
+        countDownDate = Date.now() + 90000
+    }
+    let oldseconds = 0;
+    let oldminutes = 0;
+    // Update the count down every 1 second
+    let countInterval = 0;
+
+
+    //let universalspeed = 1.01
+    let universalspeed = 1.001
+    let speedvariation = 0.001
+    let starspeeds = [universalspeed, universalspeed + speedvariation]
+    let starArray = []
+    addStars(500)
 
     function randomRange(min, max)
     {
@@ -221,7 +224,7 @@ window.onload = function ()
     {
         countInterval++
         // Get today's date and time
-        var now = Date.now() + serverTimeOffset;
+        var now = new Date(GLOBALTimeData.dateTime).getTime();
         // Find the distance between now and the count down date
         distance = countDownDate - now;
 
