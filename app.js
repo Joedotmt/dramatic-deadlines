@@ -14,7 +14,10 @@ function updateServerTime() {
 
 // Initial fetch and then update every minute (60000 ms)
 updateServerTime();
-setInterval(updateServerTime, 60000);
+setTimeout(() => {
+    updateServerTime();
+}, 500);
+setInterval(updateServerTime, 2000);
 
 chat_view_mode = true
 function swap_chat_view()
